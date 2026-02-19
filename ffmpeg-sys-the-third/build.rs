@@ -865,13 +865,83 @@ fn link_to_libraries(statik: bool) {
         println!("cargo:rustc-link-lib=z");
     }
     if statik && cfg!(target_os = "windows") {
+        // Video codecs
+        println!("cargo:rustc-link-lib=static=vpx");
+        println!("cargo:rustc-link-lib=static=dav1d");
+        println!("cargo:rustc-link-lib=static=aom");
+        println!("cargo:rustc-link-lib=static=rav1e");
+        println!("cargo:rustc-link-lib=static=SvtAv1Enc");
+        println!("cargo:rustc-link-lib=static=x264");
+        println!("cargo:rustc-link-lib=static=x265");
+        println!("cargo:rustc-link-lib=static=xvidcore");
+        println!("cargo:rustc-link-lib=static=vidstab");
+        // Image / container
+        println!("cargo:rustc-link-lib=static=webpmux");
+        println!("cargo:rustc-link-lib=static=webp");
+        println!("cargo:rustc-link-lib=static=openjp2");
+        println!("cargo:rustc-link-lib=static=jxl");
+        println!("cargo:rustc-link-lib=static=jxl_threads");
+        println!("cargo:rustc-link-lib=static=png");
+        println!("cargo:rustc-link-lib=static=bluray");
+        // Audio codecs
+        println!("cargo:rustc-link-lib=static=mp3lame");
+        println!("cargo:rustc-link-lib=static=opus");
+        println!("cargo:rustc-link-lib=static=vorbisenc");
+        println!("cargo:rustc-link-lib=static=vorbis");
+        println!("cargo:rustc-link-lib=static=ogg");
+        println!("cargo:rustc-link-lib=static=theoraenc");
+        println!("cargo:rustc-link-lib=static=theoradec");
+        println!("cargo:rustc-link-lib=static=speex");
+        println!("cargo:rustc-link-lib=static=opencore-amrnb");
+        println!("cargo:rustc-link-lib=static=opencore-amrwb");
+        println!("cargo:rustc-link-lib=static=gsm");
+        println!("cargo:rustc-link-lib=static=lc3");
+        println!("cargo:rustc-link-lib=static=soxr");
+        // Subtitle / graphics / font
+        println!("cargo:rustc-link-lib=static=ass");
+        println!("cargo:rustc-link-lib=static=placebo");
+        println!("cargo:rustc-link-lib=static=shaderc_combined");
+        println!("cargo:rustc-link-lib=static=fribidi");
+        println!("cargo:rustc-link-lib=static=harfbuzz");
+        println!("cargo:rustc-link-lib=static=zimg");
+        println!("cargo:rustc-link-lib=static=zvbi");
+        println!("cargo:rustc-link-lib=static=rsvg-2");
+        println!("cargo:rustc-link-lib=static=gdk_pixbuf-2.0");
+        println!("cargo:rustc-link-lib=static=gio-2.0");
+        println!("cargo:rustc-link-lib=static=cairo");
+        println!("cargo:rustc-link-lib=static=gobject-2.0");
+        println!("cargo:rustc-link-lib=static=glib-2.0");
+        println!("cargo:rustc-link-lib=static=fontconfig");
+        println!("cargo:rustc-link-lib=static=freetype");
+        // Misc media
+        println!("cargo:rustc-link-lib=static=gme");
+        println!("cargo:rustc-link-lib=static=modplug");
+        // Network / crypto
+        println!("cargo:rustc-link-lib=static=srt");
+        println!("cargo:rustc-link-lib=static=ssh");
+        println!("cargo:rustc-link-lib=static=rtmp");
+        println!("cargo:rustc-link-lib=static=gnutls");
+        println!("cargo:rustc-link-lib=static=hogweed");
+        println!("cargo:rustc-link-lib=static=nettle");
+        println!("cargo:rustc-link-lib=static=gmp");
+        // Compression / XML
+        println!("cargo:rustc-link-lib=static=z");
+        println!("cargo:rustc-link-lib=static=bz2");
+        println!("cargo:rustc-link-lib=static=lzma");
         println!("cargo:rustc-link-lib=static:+verbatim=libxml2.a");
-        println!("cargo:rustc-link-lib=z");
         println!("cargo:rustc-link-lib=iconv");
         println!("cargo:rustc-link-lib=intl");
-        println!("cargo:rustc-link-lib=soxr");
-        println!("cargo:rustc-link-lib=va");
+        // Windows system
+        println!("cargo:rustc-link-lib=vpl");
         println!("cargo:rustc-link-lib=va_win32");
+        println!("cargo:rustc-link-lib=va");
+        println!("cargo:rustc-link-lib=bcrypt");
+        println!("cargo:rustc-link-lib=mfuuid");
+        println!("cargo:rustc-link-lib=strmiids");
+        println!("cargo:rustc-link-lib=ole32");
+        println!("cargo:rustc-link-lib=uuid");
+        println!("cargo:rustc-link-lib=user32");
+        println!("cargo:rustc-link-lib=gdi32");
     }
 }
 
@@ -929,13 +999,83 @@ fn main() {
         }
 
         if statik && cfg!(target_os = "windows") {
+            // Video codecs
+            println!("cargo:rustc-link-lib=static=vpx");
+            println!("cargo:rustc-link-lib=static=dav1d");
+            println!("cargo:rustc-link-lib=static=aom");
+            println!("cargo:rustc-link-lib=static=rav1e");
+            println!("cargo:rustc-link-lib=static=SvtAv1Enc");
+            println!("cargo:rustc-link-lib=static=x264");
+            println!("cargo:rustc-link-lib=static=x265");
+            println!("cargo:rustc-link-lib=static=xvidcore");
+            println!("cargo:rustc-link-lib=static=vidstab");
+            // Image / container
+            println!("cargo:rustc-link-lib=static=webpmux");
+            println!("cargo:rustc-link-lib=static=webp");
+            println!("cargo:rustc-link-lib=static=openjp2");
+            println!("cargo:rustc-link-lib=static=jxl");
+            println!("cargo:rustc-link-lib=static=jxl_threads");
+            println!("cargo:rustc-link-lib=static=png");
+            println!("cargo:rustc-link-lib=static=bluray");
+            // Audio codecs
+            println!("cargo:rustc-link-lib=static=mp3lame");
+            println!("cargo:rustc-link-lib=static=opus");
+            println!("cargo:rustc-link-lib=static=vorbisenc");
+            println!("cargo:rustc-link-lib=static=vorbis");
+            println!("cargo:rustc-link-lib=static=ogg");
+            println!("cargo:rustc-link-lib=static=theoraenc");
+            println!("cargo:rustc-link-lib=static=theoradec");
+            println!("cargo:rustc-link-lib=static=speex");
+            println!("cargo:rustc-link-lib=static=opencore-amrnb");
+            println!("cargo:rustc-link-lib=static=opencore-amrwb");
+            println!("cargo:rustc-link-lib=static=gsm");
+            println!("cargo:rustc-link-lib=static=lc3");
+            println!("cargo:rustc-link-lib=static=soxr");
+            // Subtitle / graphics / font
+            println!("cargo:rustc-link-lib=static=ass");
+            println!("cargo:rustc-link-lib=static=placebo");
+            println!("cargo:rustc-link-lib=static=shaderc_combined");
+            println!("cargo:rustc-link-lib=static=fribidi");
+            println!("cargo:rustc-link-lib=static=harfbuzz");
+            println!("cargo:rustc-link-lib=static=zimg");
+            println!("cargo:rustc-link-lib=static=zvbi");
+            println!("cargo:rustc-link-lib=static=rsvg-2");
+            println!("cargo:rustc-link-lib=static=gdk_pixbuf-2.0");
+            println!("cargo:rustc-link-lib=static=gio-2.0");
+            println!("cargo:rustc-link-lib=static=cairo");
+            println!("cargo:rustc-link-lib=static=gobject-2.0");
+            println!("cargo:rustc-link-lib=static=glib-2.0");
+            println!("cargo:rustc-link-lib=static=fontconfig");
+            println!("cargo:rustc-link-lib=static=freetype");
+            // Misc media
+            println!("cargo:rustc-link-lib=static=gme");
+            println!("cargo:rustc-link-lib=static=modplug");
+            // Network / crypto
+            println!("cargo:rustc-link-lib=static=srt");
+            println!("cargo:rustc-link-lib=static=ssh");
+            println!("cargo:rustc-link-lib=static=rtmp");
+            println!("cargo:rustc-link-lib=static=gnutls");
+            println!("cargo:rustc-link-lib=static=hogweed");
+            println!("cargo:rustc-link-lib=static=nettle");
+            println!("cargo:rustc-link-lib=static=gmp");
+            // Compression / XML
+            println!("cargo:rustc-link-lib=static=z");
+            println!("cargo:rustc-link-lib=static=bz2");
+            println!("cargo:rustc-link-lib=static=lzma");
             println!("cargo:rustc-link-lib=static:+verbatim=libxml2.a");
-            println!("cargo:rustc-link-lib=z");
             println!("cargo:rustc-link-lib=iconv");
             println!("cargo:rustc-link-lib=intl");
-            println!("cargo:rustc-link-lib=soxr");
-            println!("cargo:rustc-link-lib=va");
+            // Windows system
+            println!("cargo:rustc-link-lib=vpl");
             println!("cargo:rustc-link-lib=va_win32");
+            println!("cargo:rustc-link-lib=va");
+            println!("cargo:rustc-link-lib=bcrypt");
+            println!("cargo:rustc-link-lib=mfuuid");
+            println!("cargo:rustc-link-lib=strmiids");
+            println!("cargo:rustc-link-lib=ole32");
+            println!("cargo:rustc-link-lib=uuid");
+            println!("cargo:rustc-link-lib=user32");
+            println!("cargo:rustc-link-lib=gdi32");
         }
 
         pkgconfig.probe("libavcodec").unwrap().include_paths
