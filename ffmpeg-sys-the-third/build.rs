@@ -942,6 +942,9 @@ fn link_to_libraries(statik: bool) {
         println!("cargo:rustc-link-lib=uuid");
         println!("cargo:rustc-link-lib=user32");
         println!("cargo:rustc-link-lib=gdi32");
+        // C++ runtime
+        println!("cargo:rustc-link-lib=static=stdc++");
+        println!("cargo:rustc-link-lib=static=gcc_eh");
     }
 }
 
@@ -1076,6 +1079,9 @@ fn main() {
             println!("cargo:rustc-link-lib=uuid");
             println!("cargo:rustc-link-lib=user32");
             println!("cargo:rustc-link-lib=gdi32");
+            // C++ runtime
+            println!("cargo:rustc-link-lib=static=stdc++");
+            println!("cargo:rustc-link-lib=static=gcc_eh");
         }
 
         pkgconfig.probe("libavcodec").unwrap().include_paths
