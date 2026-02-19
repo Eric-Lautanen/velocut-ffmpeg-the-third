@@ -868,6 +868,9 @@ fn link_to_libraries(statik: bool) {
         println!("cargo:rustc-link-lib=static:+verbatim=libxml2.a");
         println!("cargo:rustc-link-lib=iconv");
         println!("cargo:rustc-link-lib=intl");
+        println!("cargo:rustc-link-lib=soxr");
+        println!("cargo:rustc-link-lib=va");
+        println!("cargo:rustc-link-lib=va_win32");
     }
 }
 
@@ -928,6 +931,9 @@ fn main() {
             println!("cargo:rustc-link-lib=static:+verbatim=libxml2.a");
             println!("cargo:rustc-link-lib=iconv");
             println!("cargo:rustc-link-lib=intl");
+            println!("cargo:rustc-link-lib=soxr");
+            println!("cargo:rustc-link-lib=va");
+            println!("cargo:rustc-link-lib=va_win32");
         }
 
         pkgconfig.probe("libavcodec").unwrap().include_paths
