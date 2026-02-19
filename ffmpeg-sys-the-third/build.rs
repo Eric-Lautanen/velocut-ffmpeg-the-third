@@ -882,6 +882,9 @@ fn link_to_libraries(statik: bool) {
             println!("cargo:rustc-link-lib=static=jxl");
             println!("cargo:rustc-link-lib=static=jxl_threads");
             println!("cargo:rustc-link-lib=static=hwy");
+            println!("cargo:rustc-link-lib=static=brotlienc"); 
+            println!("cargo:rustc-link-lib=static=brotlidec");   
+            println!("cargo:rustc-link-lib=static=brotlicommon");  
             println!("cargo:rustc-link-lib=static=png");
             println!("cargo:rustc-link-lib=static=bluray");
             // Audio codecs
@@ -902,6 +905,10 @@ fn link_to_libraries(statik: bool) {
             println!("cargo:rustc-link-lib=static=ass");
             println!("cargo:rustc-link-lib=static=placebo");
             println!("cargo:rustc-link-lib=static=shaderc_combined");
+            println!("cargo:rustc-link-lib=static=glslang");               
+            println!("cargo:rustc-link-lib=static=SPIRV-Tools-opt"); 
+            println!("cargo:rustc-link-lib=static=SPIRV-Tools");        
+            println!("cargo:rustc-link-lib=static=SPIRV");
             println!("cargo:rustc-link-lib=static=fribidi");
             println!("cargo:rustc-link-lib=static=harfbuzz");
             println!("cargo:rustc-link-lib=static=zimg");
@@ -1039,6 +1046,9 @@ fn main() {
             println!("cargo:rustc-link-lib=static=jxl");
             println!("cargo:rustc-link-lib=static=jxl_threads");
             println!("cargo:rustc-link-lib=static=hwy");
+            println!("cargo:rustc-link-lib=static=brotlienc");    
+            println!("cargo:rustc-link-lib=static=brotlidec");            
+            println!("cargo:rustc-link-lib=static=brotlicommon");  
             println!("cargo:rustc-link-lib=static=png");
             println!("cargo:rustc-link-lib=static=bluray");
             // Audio codecs
@@ -1059,6 +1069,10 @@ fn main() {
             println!("cargo:rustc-link-lib=static=ass");
             println!("cargo:rustc-link-lib=static=placebo");
             println!("cargo:rustc-link-lib=static=shaderc_combined");
+            println!("cargo:rustc-link-lib=static=glslang");              
+            println!("cargo:rustc-link-lib=static=SPIRV-Tools-opt"); 
+            println!("cargo:rustc-link-lib=static=SPIRV-Tools"); 
+            println!("cargo:rustc-link-lib=static=SPIRV");
             println!("cargo:rustc-link-lib=static=fribidi");
             println!("cargo:rustc-link-lib=static=harfbuzz");
             println!("cargo:rustc-link-lib=static=zimg");
