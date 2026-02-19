@@ -579,6 +579,7 @@ fn build(out_dir: &Path, ffmpeg_version: &str) -> io::Result<PathBuf> {
     // configure misc build options
     configure.enable("BUILD_PIC", "pic");
     configure.arg("--disable-hwaccels");
+    configure.arg("--disable-qsv");
 
     // run ./configure
     let output = configure
