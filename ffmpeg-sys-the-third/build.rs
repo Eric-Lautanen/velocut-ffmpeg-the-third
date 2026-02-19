@@ -578,6 +578,7 @@ fn build(out_dir: &Path, ffmpeg_version: &str) -> io::Result<PathBuf> {
     configure.enable("BUILD_NVENC", "nvenc");
     // configure misc build options
     configure.enable("BUILD_PIC", "pic");
+    configure.arg("--disable-hwaccels");
 
     // run ./configure
     let output = configure
