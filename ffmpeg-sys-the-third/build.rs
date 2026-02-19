@@ -864,6 +864,12 @@ fn link_to_libraries(statik: bool) {
     if cargo_feature_enabled("build_zlib") && cfg!(target_os = "linux") {
         println!("cargo:rustc-link-lib=z");
     }
+    // Windows static link deps for system FFmpeg
+    if cfg!(target_os = "windows") && statik {
+        println!("cargo:rustc-link-lib=static:libxml2");
+        println!("cargo:rustc-link-lib=iconv");
+        println!("cargo:rustc-link-lib=intl");
+    }
 }
 
 fn main() {
