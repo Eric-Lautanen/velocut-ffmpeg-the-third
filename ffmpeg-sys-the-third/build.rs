@@ -864,9 +864,8 @@ fn link_to_libraries(statik: bool) {
     if cargo_feature_enabled("build_zlib") && cfg!(target_os = "linux") {
         println!("cargo:rustc-link-lib=z");
     }
-    // Windows static link deps for system FFmpeg
-    if cfg!(target_os = "windows") && statik {
-        println!("cargo:rustc-link-lib=static:libxml2");
+    if statik && cfg!(target_os = "windows") {
+        println!("cargo:rustc-link-lib=static:+verbatim=libxml2.a");
         println!("cargo:rustc-link-lib=iconv");
         println!("cargo:rustc-link-lib=intl");
     }
@@ -923,6 +922,12 @@ fn main() {
 
         for lib in LIBRARIES.iter().filter(|lib| lib.enabled()) {
             let _ = pkgconfig.probe(&lib.lib_name()).unwrap();
+        }
+
+        if statik && cfg!(target_os = "windows") {
+            println!("cargo:rustc-link-lib=static:+verbatim=libxml2.a");
+            println!("cargo:rustc-link-lib=iconv");
+            println!("cargo:rustc-link-lib=intl");
         }
 
         pkgconfig.probe("libavcodec").unwrap().include_paths
