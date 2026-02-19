@@ -543,7 +543,7 @@ fn build(out_dir: &Path, ffmpeg_version: &str) -> io::Result<PathBuf> {
         configure.arg("--enable-stripping");
     }
 
-    // make it static
+    // make it statik
     configure.arg("--enable-static");
     configure.arg("--disable-shared");
 
