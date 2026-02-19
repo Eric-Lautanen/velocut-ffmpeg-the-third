@@ -866,6 +866,7 @@ fn link_to_libraries(statik: bool) {
     }
     if statik && cfg!(target_os = "windows") {
         println!("cargo:rustc-link-lib=static:+verbatim=libxml2.a");
+        println!("cargo:rustc-link-lib=z");
         println!("cargo:rustc-link-lib=iconv");
         println!("cargo:rustc-link-lib=intl");
         println!("cargo:rustc-link-lib=soxr");
@@ -929,6 +930,7 @@ fn main() {
 
         if statik && cfg!(target_os = "windows") {
             println!("cargo:rustc-link-lib=static:+verbatim=libxml2.a");
+            println!("cargo:rustc-link-lib=z");
             println!("cargo:rustc-link-lib=iconv");
             println!("cargo:rustc-link-lib=intl");
             println!("cargo:rustc-link-lib=soxr");
