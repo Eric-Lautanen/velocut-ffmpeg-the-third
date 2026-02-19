@@ -868,6 +868,7 @@ fn link_to_libraries(statik: bool) {
             // Video codecs
             println!("cargo:rustc-link-lib=static=vpx");
             println!("cargo:rustc-link-lib=static=dav1d");
+            println!("cargo:rustc-link-lib=static=gomp");
             println!("cargo:rustc-link-lib=static=aom");
             println!("cargo:rustc-link-lib=static=rav1e");
             println!("cargo:rustc-link-lib=static=SvtAv1Enc");
@@ -1032,6 +1033,7 @@ fn main() {
             // Video codecs
             println!("cargo:rustc-link-lib=static=vpx");
             println!("cargo:rustc-link-lib=static=dav1d");
+            println!("cargo:rustc-link-lib=static=gomp");
             println!("cargo:rustc-link-lib=static=aom");
             println!("cargo:rustc-link-lib=static=rav1e");
             println!("cargo:rustc-link-lib=static=SvtAv1Enc");
