@@ -923,7 +923,8 @@ fn link_to_libraries(statik: bool) {
             println!("cargo:rustc-link-lib=static=ssh");
             println!("cargo:rustc-link-lib=static=rtmp");
             println!("cargo:rustc-link-lib=static=gnutls");
-            println!("cargo:rustc-link-lib=static=tasn1");  
+            println!("cargo:rustc-link-lib=static=tasn1");
+            println!("cargo:rustc-link-lib=static=unistring");
             println!("cargo:rustc-link-lib=static=hogweed");
             println!("cargo:rustc-link-lib=static=nettle");
             println!("cargo:rustc-link-lib=static=gmp");
@@ -1079,7 +1080,8 @@ fn main() {
             println!("cargo:rustc-link-lib=static=ssh");
             println!("cargo:rustc-link-lib=static=rtmp");
             println!("cargo:rustc-link-lib=static=gnutls");
-            println!("cargo:rustc-link-lib=static=tasn1");  
+            println!("cargo:rustc-link-lib=static=tasn1");
+            println!("cargo:rustc-link-lib=static=unistring");
             println!("cargo:rustc-link-lib=static=hogweed");
             println!("cargo:rustc-link-lib=static=nettle");
             println!("cargo:rustc-link-lib=static=gmp");
