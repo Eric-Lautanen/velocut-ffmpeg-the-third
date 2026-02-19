@@ -905,6 +905,9 @@ fn link_to_libraries(statik: bool) {
             // Subtitle / graphics / font
             println!("cargo:rustc-link-lib=static=ass");
             println!("cargo:rustc-link-lib=static=placebo");
+            println!("cargo:rustc-link-lib=static=lcms2");
+            println!("cargo:rustc-link-lib=static=dovi");
+            println!("cargo:rustc-link-lib=dylib=vulkan-1");
             println!("cargo:rustc-link-lib=static=shaderc_combined");
             println!("cargo:rustc-link-lib=static=glslang");               
             println!("cargo:rustc-link-lib=static=SPIRV-Tools-opt"); 
@@ -933,6 +936,7 @@ fn link_to_libraries(statik: bool) {
             println!("cargo:rustc-link-lib=static=gnutls");
             println!("cargo:rustc-link-lib=static=tasn1");
             println!("cargo:rustc-link-lib=static=unistring");
+            println!("cargo:rustc-link-lib=static=idn2");
             println!("cargo:rustc-link-lib=static=hogweed");
             println!("cargo:rustc-link-lib=static=nettle");
             println!("cargo:rustc-link-lib=static=gmp");
@@ -1070,6 +1074,9 @@ fn main() {
             // Subtitle / graphics / font
             println!("cargo:rustc-link-lib=static=ass");
             println!("cargo:rustc-link-lib=static=placebo");
+            println!("cargo:rustc-link-lib=static=lcms2");
+            println!("cargo:rustc-link-lib=static=dovi");
+            println!("cargo:rustc-link-lib=dylib=vulkan-1");
             println!("cargo:rustc-link-lib=static=shaderc_combined");
             println!("cargo:rustc-link-lib=static=glslang");              
             println!("cargo:rustc-link-lib=static=SPIRV-Tools-opt"); 
@@ -1098,6 +1105,7 @@ fn main() {
             println!("cargo:rustc-link-lib=static=gnutls");
             println!("cargo:rustc-link-lib=static=tasn1");
             println!("cargo:rustc-link-lib=static=unistring");
+            println!("cargo:rustc-link-lib=static=idn2");
             println!("cargo:rustc-link-lib=static=hogweed");
             println!("cargo:rustc-link-lib=static=nettle");
             println!("cargo:rustc-link-lib=static=gmp");
