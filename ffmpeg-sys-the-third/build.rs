@@ -866,7 +866,7 @@ fn link_to_libraries(statik: bool) {
     }
     if statik {
         println!("cargo:rustc-link-search=native=/mingw64/lib");
-        println!("cargo:rustc-link-lib=static=x264");
+        println!("cargo:rustc-link-lib=x264");
         println!("cargo:rustc-link-lib=static=z");
         println!("cargo:rustc-link-lib=static=bz2");
         println!("cargo:rustc-link-lib=iconv");
