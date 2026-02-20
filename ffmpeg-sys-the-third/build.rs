@@ -868,8 +868,8 @@ fn link_to_libraries(statik: bool) {
         println!("cargo:rustc-link-search=native=/mingw64/lib");
         println!("cargo:rustc-link-lib=x264");
         println!("cargo:rustc-link-lib=z");
-        println!("cargo:rustc-link-lib=verbatim=libbz2.a");
-        println!("cargo:rustc-link-lib=verbatim=libiconv.a");
+        println!("cargo:rustc-link-lib=libbz2.a");
+        println!("cargo:rustc-link-lib=libiconv.a");
         println!("cargo:rustc-link-lib=bcrypt");
         println!("cargo:rustc-link-lib=ole32");
         println!("cargo:rustc-link-lib=user32");
