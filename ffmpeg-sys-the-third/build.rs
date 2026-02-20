@@ -889,8 +889,8 @@ fn link_to_libraries(statik: bool) {
         if let Some(dir) = gcc_lib_dir {
             println!("cargo:rustc-link-search=native={}", dir.display());
         }
-        println!("cargo:rustc-link-lib=static=stdc++");
-        println!("cargo:rustc-link-lib=static=gcc_eh");
+        println!("cargo:rustc-link-lib=stdc++");
+        println!("cargo:rustc-link-lib=gcc_eh");
     }
 }
 
