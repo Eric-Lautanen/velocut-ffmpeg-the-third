@@ -865,6 +865,7 @@ fn link_to_libraries(statik: bool) {
         println!("cargo:rustc-link-lib=z");
     }
     if statik && cfg!(target_os = "windows") {
+        println!("cargo:rustc-link-search=native=/mingw64/lib");
         println!("cargo:rustc-link-lib=static=x264");
         println!("cargo:rustc-link-lib=static=z");
         println!("cargo:rustc-link-lib=static=bz2");
@@ -873,6 +874,23 @@ fn link_to_libraries(statik: bool) {
         println!("cargo:rustc-link-lib=ole32");
         println!("cargo:rustc-link-lib=user32");
         println!("cargo:rustc-link-lib=gdi32");
+        // C++ runtime
+        let gcc_lib_dir = std::process::Command::new("gcc")
+            .args(&["--print-file-name=libgcc_eh.a"])
+            .output()
+            .map(|o| {
+                let path = String::from_utf8_lossy(&o.stdout).trim().to_string();
+                std::path::PathBuf::from(path)
+                    .parent()
+                    .map(|p| p.to_path_buf())
+            })
+            .ok()
+            .flatten();
+        if let Some(dir) = gcc_lib_dir {
+            println!("cargo:rustc-link-search=native={}", dir.display());
+        }
+        println!("cargo:rustc-link-lib=static=stdc++");
+        println!("cargo:rustc-link-lib=static=gcc_eh");
     }
 }
 
