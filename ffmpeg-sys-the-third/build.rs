@@ -82,17 +82,14 @@ impl AVFeature {
 }
 
 static AVUTIL_FEATURES: &[AVFeature] = &[
-    // before 5.0 (< v57)
     AVFeature::new("VAAPI"),
     AVFeature::new("PKT_PTS"),
     AVFeature::new("ERROR_FRAME"),
     AVFeature::new("FRAME_QP"),
-    // before 6.0 (< v58)
     AVFeature::new("D2STR"),
     AVFeature::new("DECLARE_ALIGNED"),
     AVFeature::new("COLORSPACE_NAME"),
     AVFeature::new("AV_MALLOCZ_ARRAY"),
-    // before 7.0 (< v59)
     AVFeature::new("XVMC"),
     AVFeature::new("FIFO_PEEK2"),
     AVFeature::new("FIFO_OLD_API"),
@@ -101,7 +98,6 @@ static AVUTIL_FEATURES: &[AVFeature] = &[
     AVFeature::new("PKT_DURATION"),
     AVFeature::new("REORDERED_OPAQUE"),
     AVFeature::new("FRAME_PICTURE_NUMBER"),
-    // before 8.0 (< v60)
     AVFeature::new("HDR_VIVID_THREE_SPLINE"),
     AVFeature::new("FRAME_PKT"),
     AVFeature::new("INTERLACED_FRAME"),
@@ -109,7 +105,6 @@ static AVUTIL_FEATURES: &[AVFeature] = &[
     AVFeature::new("PALETTE_HAS_CHANGED"),
     AVFeature::new("VULKAN_CONTIGUOUS_MEMORY"),
     AVFeature::new("H274_FILM_GRAIN_VCS"),
-    // before 9.0 (< v61)
     AVFeature::new("MOD_UINTP2"),
     AVFeature::new("RISCV_FD_ZBA"),
     AVFeature::new("VULKAN_FIXED_QUEUES"),
@@ -118,7 +113,6 @@ static AVUTIL_FEATURES: &[AVFeature] = &[
 ];
 
 static AVCODEC_FEATURES: &[AVFeature] = &[
-    // before 5.0 (< v59)
     AVFeature::new("LOWRES"),
     AVFeature::new("CODED_FRAME"),
     AVFeature::new("CONVERGENCE_DURATION"),
@@ -129,7 +123,6 @@ static AVCODEC_FEATURES: &[AVFeature] = &[
     AVFeature::new("VBV_DELAY"),
     AVFeature::new("SIDEDATA_ONLY_PKT"),
     AVFeature::new("AVPICTURE"),
-    // before 6.0 (< v60)
     AVFeature::new("OPENH264_SLICE_MODE"),
     AVFeature::new("OPENH264_CABAC"),
     AVFeature::new("UNUSED_CODEC_CAPS"),
@@ -140,7 +133,6 @@ static AVCODEC_FEATURES: &[AVFeature] = &[
     AVFeature::new("AVCTX_TIMEBASE"),
     AVFeature::new("FLAG_TRUNCATED"),
     AVFeature::new("SUB_TEXT_FORMAT"),
-    // before 7.0 (< v61)
     AVFeature::new("IDCT_NONE"),
     AVFeature::new("SVTAV1_OPTS"),
     AVFeature::new("AYUV_CODECID"),
@@ -149,7 +141,6 @@ static AVCODEC_FEATURES: &[AVFeature] = &[
     AVFeature::new("VT_HWACCEL_CONTEXT"),
     AVFeature::new("AVCTX_FRAME_NUMBER"),
     AVFeature::new("SLICE_OFFSET"),
-    // before 8.0 (< v62)
     AVFeature::new("SUBFRAMES"),
     AVFeature::new("TICKS_PER_FRAME"),
     AVFeature::new("DROPCHANGED"),
@@ -159,7 +150,6 @@ static AVCODEC_FEATURES: &[AVFeature] = &[
     AVFeature::new("BUFFER_MIN_SIZE"),
     AVFeature::new("VDPAU_ALLOC_GET_SET"),
     AVFeature::new("QUALITY_FACTOR"),
-    // before 9.0 (< v63)
     AVFeature::new("INIT_PACKET"),
     AVFeature::new("V408_CODECID"),
     AVFeature::new("CODEC_PROPS"),
@@ -171,59 +161,43 @@ static AVCODEC_FEATURES: &[AVFeature] = &[
 ];
 
 static AVFORMAT_FEATURES: &[AVFeature] = &[
-    // before 5.0 (< v59)
     AVFeature::new("LAVF_AVCTX"),
     AVFeature::new("OLD_OPEN_CALLBACKS"),
-    // before 6.0 (< v60)
     AVFeature::new("LAVF_PRIV_OPT"),
     AVFeature::new("AVIOCONTEXT_WRITTEN"),
-    // before 7.0 (< v61)
     AVFeature::new("GET_END_PTS"),
     AVFeature::new("AVIODIRCONTEXT"),
     AVFeature::new("AVFORMAT_IO_CLOSE"),
     AVFeature::new("AVIO_WRITE_NONCONST"),
-    // before 8.0 (< v62)
     AVFeature::new("LAVF_SHORTEST"),
     AVFeature::new("ALLOW_FLUSH"),
     AVFeature::new("AVSTREAM_SIDE_DATA"),
     AVFeature::new("GET_DUR_ESTIMATE_METHOD"),
-    // before 9.0 (< v63)
     AVFeature::new("COMPUTE_PKT_FIELDS2"),
     AVFeature::new("INTERNAL_TIMING"),
     AVFeature::new("NO_DEFAULT_TLS_VERIFY"),
-
-    // after 5.0 (> v59)
     AVFeature::new("AVSTREAM_CLASS"),
-    // for all eternity
     AVFeature::new("R_FRAME_RATE"),
 ];
 
 static AVDEVICE_FEATURES: &[AVFeature] = &[
-    // before 6.0 (< v60)
     AVFeature::new("DEVICE_CAPABILITIES"),
-    // before 8.0 (< v62)
     AVFeature::new("BKTR_DEVICE"),
     AVFeature::new("OPENGL_DEVICE"),
     AVFeature::new("SDL2_DEVICE"),
-    // before 9.0 (< v63)
     AVFeature::new("ALSA_CHANNELS"),
 ];
 
 static AVFILTER_FEATURES: &[AVFeature] = &[
-    // before 5.0 (< v8)
     AVFeature::new("OLD_FILTER_OPTS_ERROR"),
-    // before 6.0 (< v9)
     AVFeature::new("SWS_PARAM_OPTION"),
     AVFeature::new("BUFFERSINK_ALLOC"),
     AVFeature::new("PAD_COUNT"),
-    // before 7.0 (< v10)
     AVFeature::new("LIBPLACEBO_OPTS"),
-    // before 8.0 (< v11)
     AVFeature::new("LINK_PUBLIC"),
 ];
 
 static SWSCALE_FEATURES: &[AVFeature] = &[];
-
 static SWRESAMPLE_FEATURES: &[AVFeature] = &[];
 
 #[derive(Debug)]
@@ -288,14 +262,12 @@ static AVUTIL_HEADERS: &[AVHeader] = &[
     AVHeader::new("time.h"),
     AVHeader::new("timecode.h"),
     AVHeader::new("twofish.h"),
-    // AVHeader::new("tx.h"),
     AVHeader::new("avutil.h"),
     AVHeader::new("xtea.h"),
 ];
 static AVCODEC_HEADERS: &[AVHeader] = &[
     AVHeader::new("avcodec.h"),
     AVHeader::new("dv_profile.h"),
-    // AVHeader::new("avfft.h"), TODO: Make these things version-aware
     AVHeader::new("vorbis_parser.h"),
 ];
 static AVFORMAT_HEADERS: &[AVHeader] = &[AVHeader::new("avformat.h"), AVHeader::new("avio.h")];
@@ -350,10 +322,8 @@ impl ParseCallbacks for Callbacks {
         }
     }
 
-    // https://github.com/rust-lang/rust-bindgen/issues/687#issuecomment-388277405
     fn will_parse_macro(&self, name: &str) -> MacroParsingBehavior {
         use crate::MacroParsingBehavior::*;
-
         match name {
             "FP_INFINITE" => Ignore,
             "FP_NAN" => Ignore,
@@ -377,7 +347,6 @@ impl FFmpegConfigure for Command {
         } else {
             format!("--disable-{option_name}")
         };
-
         self.arg(arg);
     }
 
@@ -426,13 +395,9 @@ fn fetch(source_dir: &Path, ffmpeg_version: &str) -> io::Result<()> {
     }
 }
 
-// left side: cargo feature name ("CARGO_FEATURE_BUILD_LIB_{}")
-// right side: FFmpeg configure name ("--enable-{}")
 static EXTERNAL_BUILD_LIBS: &[(&str, &str)] = &[
-    // SSL
     ("GNUTLS", "gnutls"),
     ("OPENSSL", "openssl"),
-    // Filters
     ("FONTCONFIG", "fontconfig"),
     ("FREI0R", "frei0r"),
     ("LADSPA", "ladspa"),
@@ -441,7 +406,6 @@ static EXTERNAL_BUILD_LIBS: &[(&str, &str)] = &[
     ("FRIBIDI", "libfribidi"),
     ("OPENCV", "libopencv"),
     ("VMAF", "libvmaf"),
-    // Encoders/decoders
     ("AACPLUS", "libaacplus"),
     ("CELT", "libcelt"),
     ("CODEC2", "libcodec2"),
@@ -490,7 +454,6 @@ static EXTERNAL_BUILD_LIBS: &[(&str, &str)] = &[
     ("XAVS2", "libxavs2"),
     ("AVS", "libavs"),
     ("XVID", "libxvid"),
-    // Protocols
     ("SMBCLIENT", "libsmbclient"),
     ("SSH", "libssh"),
 ];
@@ -505,7 +468,6 @@ fn build(out_dir: &Path, ffmpeg_version: &str) -> io::Result<PathBuf> {
 
     fetch(&source_dir, ffmpeg_version)?;
 
-    // Command's path is not relative to command's current_dir
     let configure_path = source_dir.join("configure");
     assert!(configure_path.exists());
     let mut configure = Command::new(&configure_path);
@@ -514,14 +476,11 @@ fn build(out_dir: &Path, ffmpeg_version: &str) -> io::Result<PathBuf> {
     configure.arg(format!("--prefix={}", install_dir.to_string_lossy()));
 
     if env::var("TARGET").unwrap() != env::var("HOST").unwrap() {
-        // Rust targets are subtly different than naming scheme for compiler prefixes.
-        // The cc crate has the messy logic of guessing a working prefix,
-        // and this is a messy way of reusing that logic.
         let cc = cc::Build::new();
         let compiler = cc.get_compiler();
         let compiler = compiler.path().file_stem().unwrap().to_str().unwrap();
-        let suffix_pos = compiler.rfind('-').unwrap(); // cut off "-gcc"
-        let prefix = compiler[0..suffix_pos].trim_end_matches("-wr"); // "wr-c++" compiler
+        let suffix_pos = compiler.rfind('-').unwrap();
+        let prefix = compiler[0..suffix_pos].trim_end_matches("-wr");
 
         configure.arg(format!("--cross-prefix={}-", prefix));
         configure.arg(format!(
@@ -534,7 +493,6 @@ fn build(out_dir: &Path, ffmpeg_version: &str) -> io::Result<PathBuf> {
         ));
     }
 
-    // control debug build
     if env::var("DEBUG").is_ok() {
         configure.arg("--enable-debug");
         configure.arg("--disable-stripping");
@@ -543,49 +501,33 @@ fn build(out_dir: &Path, ffmpeg_version: &str) -> io::Result<PathBuf> {
         configure.arg("--enable-stripping");
     }
 
-    // make it statik
     configure.arg("--enable-static");
     configure.arg("--disable-shared");
-
     configure.arg("--enable-pic");
-
-    // stop autodetected libraries enabling themselves, causing linking errors
     configure.arg("--disable-autodetect");
-
-    // do not build programs since we don't need them
     configure.arg("--disable-programs");
 
-    // the binary using ffmpeg-sys must comply with GPL
     configure.switch("BUILD_LICENSE_GPL", "gpl");
-
-    // the binary using ffmpeg-sys must comply with (L)GPLv3
     configure.switch("BUILD_LICENSE_VERSION3", "version3");
-
-    // the binary using ffmpeg-sys cannot be redistributed
     configure.switch("BUILD_LICENSE_NONFREE", "nonfree");
 
-    // configure building libraries based on features
     for lib in LIBRARIES.iter().filter(|lib| lib.optional) {
         configure.switch(&lib.name.to_uppercase(), lib.name);
     }
 
-    // configure external libraries based on features
     for (cargo_feat, option_name) in EXTERNAL_BUILD_LIBS {
         configure.enable(&format!("BUILD_LIB_{cargo_feat}"), option_name);
     }
 
     configure.enable("BUILD_DRM", "libdrm");
     configure.enable("BUILD_NVENC", "nvenc");
-    // configure misc build options
     configure.enable("BUILD_PIC", "pic");
 
-    // run ./configure
     let output = configure
         .output()
         .unwrap_or_else(|_| panic!("{:?} failed", configure));
     if !output.status.success() {
         println!("configure: {}", String::from_utf8_lossy(&output.stdout));
-
         return Err(io::Error::new(
             io::ErrorKind::Other,
             format!(
@@ -601,7 +543,6 @@ fn build(out_dir: &Path, ffmpeg_version: &str) -> io::Result<PathBuf> {
         "1".to_string()
     };
 
-    // run make
     if !Command::new("make")
         .arg(format!("-j{num_jobs}"))
         .current_dir(&source_dir)
@@ -611,7 +552,6 @@ fn build(out_dir: &Path, ffmpeg_version: &str) -> io::Result<PathBuf> {
         return Err(io::Error::new(io::ErrorKind::Other, "make failed"));
     }
 
-    // run make install
     if !Command::new("make")
         .current_dir(&source_dir)
         .arg("install")
@@ -664,17 +604,14 @@ fn try_vcpkg(statik: bool) -> Option<Vec<PathBuf>> {
         .ok()
 }
 
-// add well known package manager lib paths us as homebrew (or macports)
 #[cfg(target_os = "macos")]
 fn add_pkg_config_path() {
     let pc_path = pkg_config::get_variable("pkg-config", "pc_path").unwrap();
-    // append M1 homebrew pkgconfig path
     let brew_pkgconfig = cfg!(target_arch = "aarch64")
         .then_some("/opt/homebrew/lib/pkgconfig/")
-        .unwrap_or("/usr/local/homebrew/lib/pkgconfig/"); // x86 as fallback
+        .unwrap_or("/usr/local/homebrew/lib/pkgconfig/");
     if !pc_path.to_lowercase().contains(brew_pkgconfig) && Path::new(brew_pkgconfig).is_dir() {
         let new_pc_path = env::var("PKG_CONFIG_PATH")
-            // PKG_CONFIG_PATH="/our/path:$PKG_CONFIG_PATH"
             .map(|p| format!("{brew_pkgconfig}:{p}"))
             .unwrap_or_else(|_| brew_pkgconfig.to_string());
         env::set_var("PKG_CONFIG_PATH", new_pc_path);
@@ -682,6 +619,82 @@ fn add_pkg_config_path() {
 }
 #[cfg(not(target_os = "macos"))]
 fn add_pkg_config_path() {}
+
+/// Emit all Windows static link directives for FFmpeg's dependencies.
+///
+/// Uses pkg-config to get the full, correctly-ordered dependency list
+/// automatically. This replaces the old hand-curated list and will
+/// self-update whenever MINGW64 packages change.
+///
+/// Three manual overrides are still required:
+/// - `vulkan-1`: only .dll.a exists on MINGW64, must link as dylib
+/// - `xml2`: must use +verbatim to force .a over .dll.a
+/// - `stdc++`/`gcc_eh`: C++ runtime not in pkg-config output; lives in
+///   GCC's internal dir so must be auto-located via `gcc --print-file-name`
+fn link_windows_static_deps() {
+    let output = Command::new("pkg-config")
+        .args(&[
+            "--libs",
+            "--static",
+            "libavcodec",
+            "libavformat",
+            "libavfilter",
+            "libswscale",
+            "libswresample",
+            "libavutil",
+        ])
+        .output()
+        .expect("pkg-config failed — ensure MINGW64 pkg-config is on PATH");
+
+    let flags = String::from_utf8_lossy(&output.stdout);
+    for flag in flags.split_whitespace() {
+        if let Some(lib) = flag.strip_prefix("-l") {
+            match lib {
+                // vulkan has no static archive on MINGW64, only .dll.a
+                "vulkan-1" => println!("cargo:rustc-link-lib=dylib=vulkan-1"),
+                // xml2 must use +verbatim to force .a over .dll.a
+                "xml2" => println!("cargo:rustc-link-lib=static:+verbatim=libxml2.a"),
+                _ => println!("cargo:rustc-link-lib=static={}", lib),
+            }
+        } else if let Some(path) = flag.strip_prefix("-L") {
+            println!("cargo:rustc-link-search=native={}", path);
+        }
+    }
+
+    // C++ runtime — libsrt and others are C++ libs; symbols like operator new,
+    // __cxa_begin_catch, __gxx_personality_seh0 etc. must be linked explicitly
+    // from Rust. libgcc_eh.a lives in GCC's internal dir, not /mingw64/lib,
+    // so we auto-locate it via `gcc --print-file-name`.
+    let gcc_lib_dir = Command::new("gcc")
+        .args(&["--print-file-name=libgcc_eh.a"])
+        .output()
+        .map(|o| {
+            let path = String::from_utf8_lossy(&o.stdout).trim().to_string();
+            PathBuf::from(path).parent().map(|p| p.to_path_buf())
+        })
+        .ok()
+        .flatten();
+
+    if let Some(dir) = gcc_lib_dir {
+        println!("cargo:rustc-link-search=native={}", dir.display());
+    }
+
+    println!("cargo:rustc-link-lib=static=stdc++");
+    println!("cargo:rustc-link-lib=static=gcc_eh");
+}
+
+fn link_to_libraries(statik: bool) {
+    let ffmpeg_ty = if statik { "static" } else { "dylib" };
+    for lib in LIBRARIES.iter().filter(|lib| lib.enabled()) {
+        println!("cargo:rustc-link-lib={}={}", ffmpeg_ty, lib.name);
+    }
+    if cargo_feature_enabled("build_zlib") && cfg!(target_os = "linux") {
+        println!("cargo:rustc-link-lib=z");
+    }
+    if statik && cfg!(target_os = "windows") {
+        link_windows_static_deps();
+    }
+}
 
 fn check_features(include_paths: &[PathBuf]) -> u64 {
     let clang = clang::Clang::new().expect("Cannot find clang");
@@ -758,7 +771,6 @@ fn check_features(include_paths: &[PathBuf]) -> u64 {
     }
 
     for (var, (var_defined, var_enabled)) in features_defined_enabled {
-        // Every possible feature needs an unconditional check-cfg to prevent warnings
         println!(r#"cargo:rustc-check-cfg=cfg(feature, values("{}"))"#, var);
         println!(r#"cargo:check_{}=true"#, var);
 
@@ -767,8 +779,6 @@ fn check_features(include_paths: &[PathBuf]) -> u64 {
             println!(r#"cargo:{}=true"#, var);
         }
 
-        // Also find out if defined or not (useful for cases where only the definition of a macro
-        // can be used as distinction)
         if var_defined {
             println!(r#"cargo:rustc-cfg=feature="{}_is_defined""#, var);
             println!(r#"cargo:{}_is_defined=true"#, var);
@@ -813,14 +823,12 @@ fn check_features(include_paths: &[PathBuf]) -> u64 {
         .get("avcodec")
         .expect("Unable to find the version for libavcodec");
 
-    // This allows removing a lot of #[cfg] attributes.
     assert!(
         lavc_version >= (58, 54),
         "FFmpeg 4.2 or higher is required, but found avcodec version {lavc_version:?}"
     );
 
     for &(ffmpeg_version_flag, lavc_version_major, lavc_version_minor) in &ffmpeg_lavc_versions {
-        // Every possible feature needs an unconditional check-cfg to prevent warnings
         println!(
             r#"cargo:rustc-check-cfg=cfg(feature, values("{}"))"#,
             ffmpeg_version_flag
@@ -833,7 +841,6 @@ fn check_features(include_paths: &[PathBuf]) -> u64 {
         }
     }
 
-    // FIXME: Remove this hack and make Library version-aware
     lavc_version.0
 }
 
@@ -856,130 +863,6 @@ fn maybe_search_include(include_paths: &[PathBuf], header: &str) -> Option<Strin
     }
 }
 
-fn link_to_libraries(statik: bool) {
-    let ffmpeg_ty = if statik { "static" } else { "dylib" };
-    for lib in LIBRARIES.iter().filter(|lib| lib.enabled()) {
-        println!("cargo:rustc-link-lib={}={}", ffmpeg_ty, lib.name);
-    }
-    if cargo_feature_enabled("build_zlib") && cfg!(target_os = "linux") {
-        println!("cargo:rustc-link-lib=z");
-    }
-    if statik && cfg!(target_os = "windows") {
-            // Video codecs
-            println!("cargo:rustc-link-lib=static=vpx");
-            println!("cargo:rustc-link-lib=static=dav1d");
-            println!("cargo:rustc-link-lib=static=gomp");
-            println!("cargo:rustc-link-lib=static=aom");
-            println!("cargo:rustc-link-lib=static=rav1e");
-            println!("cargo:rustc-link-lib=static=SvtAv1Enc");
-            println!("cargo:rustc-link-lib=static=x264");
-            println!("cargo:rustc-link-lib=static=x265");
-            println!("cargo:rustc-link-lib=static=xvidcore");
-            println!("cargo:rustc-link-lib=static=vidstab");
-            // Image / container
-            println!("cargo:rustc-link-lib=static=webpmux");
-            println!("cargo:rustc-link-lib=static=webp");
-            println!("cargo:rustc-link-lib=static=openjp2");
-            println!("cargo:rustc-link-lib=static=jxl");
-            println!("cargo:rustc-link-lib=static=jxl_threads");
-            println!("cargo:rustc-link-lib=static=hwy");
-            println!("cargo:rustc-link-lib=static=brotlienc"); 
-            println!("cargo:rustc-link-lib=static=brotlidec");   
-            println!("cargo:rustc-link-lib=static=brotlicommon");  
-            println!("cargo:rustc-link-lib=static=png");
-            println!("cargo:rustc-link-lib=static=bluray");
-            // Audio codecs
-            println!("cargo:rustc-link-lib=static=mp3lame");
-            println!("cargo:rustc-link-lib=static=opus");
-            println!("cargo:rustc-link-lib=static=vorbisenc");
-            println!("cargo:rustc-link-lib=static=vorbis");
-            println!("cargo:rustc-link-lib=static=ogg");
-            println!("cargo:rustc-link-lib=static=theoraenc");
-            println!("cargo:rustc-link-lib=static=theoradec");
-            println!("cargo:rustc-link-lib=static=speex");
-            println!("cargo:rustc-link-lib=static=opencore-amrnb");
-            println!("cargo:rustc-link-lib=static=opencore-amrwb");
-            println!("cargo:rustc-link-lib=static=gsm");
-            println!("cargo:rustc-link-lib=static=lc3");
-            println!("cargo:rustc-link-lib=static=soxr");
-            // Subtitle / graphics / font
-            println!("cargo:rustc-link-lib=static=ass");
-            println!("cargo:rustc-link-lib=static=placebo");
-            println!("cargo:rustc-link-lib=static=lcms2");
-            println!("cargo:rustc-link-lib=static=dovi");
-            println!("cargo:rustc-link-lib=dylib=vulkan-1");
-            println!("cargo:rustc-link-lib=static=shaderc_combined");
-            println!("cargo:rustc-link-lib=static=glslang");               
-            println!("cargo:rustc-link-lib=static=SPIRV-Tools-opt"); 
-            println!("cargo:rustc-link-lib=static=SPIRV-Tools");        
-            println!("cargo:rustc-link-lib=static=SPIRV");
-            println!("cargo:rustc-link-lib=static=fribidi");
-            println!("cargo:rustc-link-lib=static=harfbuzz");
-            println!("cargo:rustc-link-lib=static=zimg");
-            println!("cargo:rustc-link-lib=static=zvbi");
-            println!("cargo:rustc-link-lib=static=rsvg-2");
-            println!("cargo:rustc-link-lib=static=gdk_pixbuf-2.0");
-            println!("cargo:rustc-link-lib=static=gio-2.0");
-            println!("cargo:rustc-link-lib=static=cairo");
-            println!("cargo:rustc-link-lib=static=gobject-2.0");
-            println!("cargo:rustc-link-lib=static=glib-2.0");
-            println!("cargo:rustc-link-lib=static=fontconfig");
-            println!("cargo:rustc-link-lib=static=freetype");
-            // Misc media
-            println!("cargo:rustc-link-lib=static=gme");
-            println!("cargo:rustc-link-lib=static=modplug");
-            // Network / crypto
-            println!("cargo:rustc-link-lib=static=srt");
-            println!("cargo:rustc-link-lib=static=crypto");
-            println!("cargo:rustc-link-lib=static=ssh");
-            println!("cargo:rustc-link-lib=static=rtmp");
-            println!("cargo:rustc-link-lib=static=gnutls");
-            println!("cargo:rustc-link-lib=static=tasn1");
-            println!("cargo:rustc-link-lib=static=unistring");
-            println!("cargo:rustc-link-lib=static=idn2");
-            println!("cargo:rustc-link-lib=static=hogweed");
-            println!("cargo:rustc-link-lib=static=nettle");
-            println!("cargo:rustc-link-lib=static=gmp");
-            // Compression / XML
-            println!("cargo:rustc-link-lib=static=z");
-            println!("cargo:rustc-link-lib=static=bz2");
-            println!("cargo:rustc-link-lib=static=lzma");
-            println!("cargo:rustc-link-lib=static:+verbatim=libxml2.a");
-            println!("cargo:rustc-link-lib=iconv");
-            println!("cargo:rustc-link-lib=intl");
-            // Windows system
-            println!("cargo:rustc-link-lib=vpl");
-            println!("cargo:rustc-link-lib=va_win32");
-            println!("cargo:rustc-link-lib=va");
-            println!("cargo:rustc-link-lib=bcrypt");
-            println!("cargo:rustc-link-lib=mfuuid");
-            println!("cargo:rustc-link-lib=strmiids");
-            println!("cargo:rustc-link-lib=ole32");
-            println!("cargo:rustc-link-lib=uuid");
-            println!("cargo:rustc-link-lib=user32");
-            println!("cargo:rustc-link-lib=gdi32");
-            // C++ runtime — auto-locate via GCC
-            let gcc_lib_dir = std::process::Command::new("gcc")
-                .args(&["--print-file-name=libgcc_eh.a"])
-                .output()
-                .map(|o| {
-                    let path = String::from_utf8_lossy(&o.stdout).trim().to_string();
-                    std::path::PathBuf::from(path)
-                        .parent()
-                        .map(|p| p.to_path_buf())
-                })
-                .ok()
-                .flatten();
-
-            if let Some(dir) = gcc_lib_dir {
-                println!("cargo:rustc-link-search=native={}", dir.display());
-            }
-
-            println!("cargo:rustc-link-lib=static=stdc++");
-            println!("cargo:rustc-link-lib=static=gcc_eh");
-    }
-}
-
 fn main() {
     let out_dir = output();
     let statik = cargo_feature_enabled("static");
@@ -993,11 +876,8 @@ fn main() {
             install_dir.join("lib").to_string_lossy()
         );
         link_to_libraries(statik);
-
         vec![install_dir.join("include")]
-    }
-    // Use prebuilt library
-    else if let Ok(ffmpeg_dir) = env::var("FFMPEG_DIR") {
+    } else if let Ok(ffmpeg_dir) = env::var("FFMPEG_DIR") {
         let ffmpeg_dir = PathBuf::from(ffmpeg_dir);
         println!(
             "cargo:rustc-link-search=native={}",
@@ -1006,25 +886,20 @@ fn main() {
         link_to_libraries(statik);
         vec![ffmpeg_dir.join("include")]
     } else if let Some(paths) = try_vcpkg(statik) {
-        // vcpkg doesn't detect the "system" dependencies
         if statik {
             if cfg!(feature = "avcodec") || cfg!(feature = "avdevice") {
                 println!("cargo:rustc-link-lib=ole32");
             }
-
             if cfg!(feature = "avformat") {
                 println!("cargo:rustc-link-lib=secur32");
                 println!("cargo:rustc-link-lib=ws2_32");
             }
-
-            // avutil dependencies
             println!("cargo:rustc-link-lib=bcrypt");
             println!("cargo:rustc-link-lib=user32");
         }
-
         paths
     } else {
-        // Fallback to pkg-config
+        // Fallback to pkg-config (our path — used for MINGW64 system FFmpeg)
         add_pkg_config_path();
         let mut pkgconfig = pkg_config::Config::new();
         pkgconfig.statik(statik);
@@ -1034,118 +909,7 @@ fn main() {
         }
 
         if statik && cfg!(target_os = "windows") {
-            // Video codecs
-            println!("cargo:rustc-link-lib=static=vpx");
-            println!("cargo:rustc-link-lib=static=dav1d");
-            println!("cargo:rustc-link-lib=static=gomp");
-            println!("cargo:rustc-link-lib=static=aom");
-            println!("cargo:rustc-link-lib=static=rav1e");
-            println!("cargo:rustc-link-lib=static=SvtAv1Enc");
-            println!("cargo:rustc-link-lib=static=x264");
-            println!("cargo:rustc-link-lib=static=x265");
-            println!("cargo:rustc-link-lib=static=xvidcore");
-            println!("cargo:rustc-link-lib=static=vidstab");
-            // Image / container
-            println!("cargo:rustc-link-lib=static=webpmux");
-            println!("cargo:rustc-link-lib=static=webp");
-            println!("cargo:rustc-link-lib=static=openjp2");
-            println!("cargo:rustc-link-lib=static=jxl");
-            println!("cargo:rustc-link-lib=static=jxl_threads");
-            println!("cargo:rustc-link-lib=static=hwy");
-            println!("cargo:rustc-link-lib=static=brotlienc");    
-            println!("cargo:rustc-link-lib=static=brotlidec");            
-            println!("cargo:rustc-link-lib=static=brotlicommon");  
-            println!("cargo:rustc-link-lib=static=png");
-            println!("cargo:rustc-link-lib=static=bluray");
-            // Audio codecs
-            println!("cargo:rustc-link-lib=static=mp3lame");
-            println!("cargo:rustc-link-lib=static=opus");
-            println!("cargo:rustc-link-lib=static=vorbisenc");
-            println!("cargo:rustc-link-lib=static=vorbis");
-            println!("cargo:rustc-link-lib=static=ogg");
-            println!("cargo:rustc-link-lib=static=theoraenc");
-            println!("cargo:rustc-link-lib=static=theoradec");
-            println!("cargo:rustc-link-lib=static=speex");
-            println!("cargo:rustc-link-lib=static=opencore-amrnb");
-            println!("cargo:rustc-link-lib=static=opencore-amrwb");
-            println!("cargo:rustc-link-lib=static=gsm");
-            println!("cargo:rustc-link-lib=static=lc3");
-            println!("cargo:rustc-link-lib=static=soxr");
-            // Subtitle / graphics / font
-            println!("cargo:rustc-link-lib=static=ass");
-            println!("cargo:rustc-link-lib=static=placebo");
-            println!("cargo:rustc-link-lib=static=lcms2");
-            println!("cargo:rustc-link-lib=static=dovi");
-            println!("cargo:rustc-link-lib=dylib=vulkan-1");
-            println!("cargo:rustc-link-lib=static=shaderc_combined");
-            println!("cargo:rustc-link-lib=static=glslang");              
-            println!("cargo:rustc-link-lib=static=SPIRV-Tools-opt"); 
-            println!("cargo:rustc-link-lib=static=SPIRV-Tools"); 
-            println!("cargo:rustc-link-lib=static=SPIRV");
-            println!("cargo:rustc-link-lib=static=fribidi");
-            println!("cargo:rustc-link-lib=static=harfbuzz");
-            println!("cargo:rustc-link-lib=static=zimg");
-            println!("cargo:rustc-link-lib=static=zvbi");
-            println!("cargo:rustc-link-lib=static=rsvg-2");
-            println!("cargo:rustc-link-lib=static=gdk_pixbuf-2.0");
-            println!("cargo:rustc-link-lib=static=gio-2.0");
-            println!("cargo:rustc-link-lib=static=cairo");
-            println!("cargo:rustc-link-lib=static=gobject-2.0");
-            println!("cargo:rustc-link-lib=static=glib-2.0");
-            println!("cargo:rustc-link-lib=static=fontconfig");
-            println!("cargo:rustc-link-lib=static=freetype");
-            // Misc media
-            println!("cargo:rustc-link-lib=static=gme");
-            println!("cargo:rustc-link-lib=static=modplug");
-            // Network / crypto
-            println!("cargo:rustc-link-lib=static=srt");
-            println!("cargo:rustc-link-lib=static=crypto");
-            println!("cargo:rustc-link-lib=static=ssh");
-            println!("cargo:rustc-link-lib=static=rtmp");
-            println!("cargo:rustc-link-lib=static=gnutls");
-            println!("cargo:rustc-link-lib=static=tasn1");
-            println!("cargo:rustc-link-lib=static=unistring");
-            println!("cargo:rustc-link-lib=static=idn2");
-            println!("cargo:rustc-link-lib=static=hogweed");
-            println!("cargo:rustc-link-lib=static=nettle");
-            println!("cargo:rustc-link-lib=static=gmp");
-            // Compression / XML
-            println!("cargo:rustc-link-lib=static=z");
-            println!("cargo:rustc-link-lib=static=bz2");
-            println!("cargo:rustc-link-lib=static=lzma");
-            println!("cargo:rustc-link-lib=static:+verbatim=libxml2.a");
-            println!("cargo:rustc-link-lib=iconv");
-            println!("cargo:rustc-link-lib=intl");
-            // Windows system
-            println!("cargo:rustc-link-lib=vpl");
-            println!("cargo:rustc-link-lib=va_win32");
-            println!("cargo:rustc-link-lib=va");
-            println!("cargo:rustc-link-lib=bcrypt");
-            println!("cargo:rustc-link-lib=mfuuid");
-            println!("cargo:rustc-link-lib=strmiids");
-            println!("cargo:rustc-link-lib=ole32");
-            println!("cargo:rustc-link-lib=uuid");
-            println!("cargo:rustc-link-lib=user32");
-            println!("cargo:rustc-link-lib=gdi32");
-            // C++ runtime — auto-locate via GCC
-            let gcc_lib_dir = std::process::Command::new("gcc")
-                .args(&["--print-file-name=libgcc_eh.a"])
-                .output()
-                .map(|o| {
-                    let path = String::from_utf8_lossy(&o.stdout).trim().to_string();
-                    std::path::PathBuf::from(path)
-                        .parent()
-                        .map(|p| p.to_path_buf())
-                })
-                .ok()
-                .flatten();
-
-            if let Some(dir) = gcc_lib_dir {
-                println!("cargo:rustc-link-search=native={}", dir.display());
-            }
-
-            println!("cargo:rustc-link-lib=static=stdc++");
-            println!("cargo:rustc-link-lib=static=gcc_eh");
+            link_windows_static_deps();
         }
 
         pkgconfig.probe("libavcodec").unwrap().include_paths
@@ -1181,19 +945,12 @@ fn main() {
         .iter()
         .map(|include| format!("-I{}", include.to_string_lossy()));
 
-    // The bindgen::Builder is the main entry point
-    // to bindgen, and lets you build up options for
-    // the resulting bindings.
     let mut builder = bindgen::Builder::default()
         .clang_args(clang_includes)
         .ctypes_prefix("libc")
-        // Not trivially copyable
         .no_copy("AVChannelLayout")
-        // We need/want to implement Debug by hand for some types
         .no_debug("AVChannelLayout")
         .no_debug("AVChannelCustom")
-        // In FFmpeg 7.0+, this has bitfield-like behaviour,
-        // so cannot be a "rustified" enum
         .newtype_enum("AVOptionType")
         .allowlist_file(r#".*[/\\]libavutil[/\\].*"#)
         .allowlist_file(r#".*[/\\]libavcodec[/\\].*"#)
@@ -1214,8 +971,6 @@ fn main() {
         builder = builder.rustified_enum(".*");
     }
 
-    // The input headers we would like to generate
-    // bindings for.
     for lib in LIBRARIES.iter().filter(|lib| lib.enabled()) {
         for header in lib.headers {
             builder = builder.header(search_include(
@@ -1242,13 +997,10 @@ fn main() {
         builder = builder.header(hwcontext_drm_header);
     }
 
-    // Finish the builder and generate the bindings.
     let bindings = builder
         .generate()
-        // Unwrap the Result and panic on failure.
         .expect("Unable to generate bindings");
 
-    // Write the bindings to the $OUT_DIR/bindings.rs file.
     bindings
         .write_to_file(out_dir.join("bindings.rs"))
         .expect("Couldn't write bindings!");
