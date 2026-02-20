@@ -864,7 +864,7 @@ fn link_to_libraries(statik: bool) {
     if cargo_feature_enabled("build_zlib") && cfg!(target_os = "linux") {
         println!("cargo:rustc-link-lib=z");
     }
-    if statik && cfg!(target_os = "windows") {
+    if statik && (cfg!(target_os = "windows") || cfg!(target_env = "gnu")) {
         println!("cargo:rustc-link-search=native=/mingw64/lib");
         println!("cargo:rustc-link-lib=static=x264");
         println!("cargo:rustc-link-lib=static=z");
