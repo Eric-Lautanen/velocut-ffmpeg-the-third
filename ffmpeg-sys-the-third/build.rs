@@ -866,15 +866,12 @@ fn link_to_libraries(statik: bool) {
     }
     if statik {
         println!("cargo:rustc-link-search=native=/mingw64/lib");
-        println!("cargo:rustc-link-lib=x264");
-        println!("cargo:rustc-link-lib=z");
+        println!("cargo:rustc-link-arg=/mingw64/lib/libx264.a");
+        println!("cargo:rustc-link-arg=/mingw64/lib/libz.a");
         println!("cargo:rustc-link-lib=bcrypt");
         println!("cargo:rustc-link-lib=ole32");
         println!("cargo:rustc-link-lib=user32");
         println!("cargo:rustc-link-lib=gdi32");
-        println!("cargo:rustc-link-lib=gdi32");
-        println!("cargo:rustc-link-lib=va");
-        println!("cargo:rustc-link-lib=va_win32");
         // C++ runtime
         let gcc_lib_dir = std::process::Command::new("gcc")
             .args(&["--print-file-name=libgcc_eh.a"])
