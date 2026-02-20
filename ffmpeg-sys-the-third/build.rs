@@ -874,6 +874,9 @@ fn link_to_libraries(statik: bool) {
         println!("cargo:rustc-link-lib=ole32");
         println!("cargo:rustc-link-lib=user32");
         println!("cargo:rustc-link-lib=gdi32");
+        println!("cargo:rustc-link-lib=gdi32");
+        println!("cargo:rustc-link-lib=va");
+        println!("cargo:rustc-link-lib=va_win32");
         // C++ runtime
         let gcc_lib_dir = std::process::Command::new("gcc")
             .args(&["--print-file-name=libgcc_eh.a"])
