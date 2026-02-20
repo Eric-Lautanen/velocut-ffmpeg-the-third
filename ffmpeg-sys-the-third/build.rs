@@ -882,6 +882,7 @@ fn link_to_libraries(statik: bool) {
             println!("cargo:rustc-link-lib=static=openjp2");
             println!("cargo:rustc-link-lib=static=jxl");
             println!("cargo:rustc-link-lib=static=jxl_threads");
+            println!("cargo:rustc-link-lib=static=jxl_cms"); 
             println!("cargo:rustc-link-lib=static=hwy");
             println!("cargo:rustc-link-lib=static=brotlienc"); 
             println!("cargo:rustc-link-lib=static=brotlidec");   
@@ -904,6 +905,7 @@ fn link_to_libraries(statik: bool) {
             println!("cargo:rustc-link-lib=static=soxr");
             // Subtitle / graphics / font
             println!("cargo:rustc-link-lib=static=ass");
+            println!("cargo:rustc-link-lib=static=unibreak");
             println!("cargo:rustc-link-lib=static=placebo");
             println!("cargo:rustc-link-lib=static=lcms2");
             println!("cargo:rustc-link-lib=static=dovi");
@@ -917,6 +919,8 @@ fn link_to_libraries(statik: bool) {
             println!("cargo:rustc-link-lib=static=harfbuzz");
             println!("cargo:rustc-link-lib=static=zimg");
             println!("cargo:rustc-link-lib=static=zvbi");
+            println!("cargo:rustc-link-lib=static=caca");
+            println!("cargo:rustc-link-lib=dylib=OpenAL32");
             println!("cargo:rustc-link-lib=static=rsvg-2");
             println!("cargo:rustc-link-lib=static=gdk_pixbuf-2.0");
             println!("cargo:rustc-link-lib=static=gio-2.0");
@@ -1051,6 +1055,7 @@ fn main() {
             println!("cargo:rustc-link-lib=static=openjp2");
             println!("cargo:rustc-link-lib=static=jxl");
             println!("cargo:rustc-link-lib=static=jxl_threads");
+            println!("cargo:rustc-link-lib=static=jxl_cms");
             println!("cargo:rustc-link-lib=static=hwy");
             println!("cargo:rustc-link-lib=static=brotlienc");    
             println!("cargo:rustc-link-lib=static=brotlidec");            
@@ -1073,6 +1078,7 @@ fn main() {
             println!("cargo:rustc-link-lib=static=soxr");
             // Subtitle / graphics / font
             println!("cargo:rustc-link-lib=static=ass");
+            println!("cargo:rustc-link-lib=static=unibreak");
             println!("cargo:rustc-link-lib=static=placebo");
             println!("cargo:rustc-link-lib=static=lcms2");
             println!("cargo:rustc-link-lib=static=dovi");
@@ -1086,6 +1092,8 @@ fn main() {
             println!("cargo:rustc-link-lib=static=harfbuzz");
             println!("cargo:rustc-link-lib=static=zimg");
             println!("cargo:rustc-link-lib=static=zvbi");
+            println!("cargo:rustc-link-lib=static=caca");
+            println!("cargo:rustc-link-lib=dylib=OpenAL32");
             println!("cargo:rustc-link-lib=static=rsvg-2");
             println!("cargo:rustc-link-lib=static=gdk_pixbuf-2.0");
             println!("cargo:rustc-link-lib=static=gio-2.0");
