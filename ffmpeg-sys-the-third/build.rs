@@ -864,6 +864,16 @@ fn link_to_libraries(statik: bool) {
     if cargo_feature_enabled("build_zlib") && cfg!(target_os = "linux") {
         println!("cargo:rustc-link-lib=z");
     }
+    if statik && cfg!(target_os = "windows") {
+        println!("cargo:rustc-link-lib=static=x264");
+        println!("cargo:rustc-link-lib=static=z");
+        println!("cargo:rustc-link-lib=static=bz2");
+        println!("cargo:rustc-link-lib=iconv");
+        println!("cargo:rustc-link-lib=bcrypt");
+        println!("cargo:rustc-link-lib=ole32");
+        println!("cargo:rustc-link-lib=user32");
+        println!("cargo:rustc-link-lib=gdi32");
+    }
 }
 
 fn main() {
