@@ -866,32 +866,112 @@ fn link_to_libraries(statik: bool) {
         println!("cargo:rustc-link-lib=z");
     }
     if statik {
-        println!("cargo:rustc-link-search=native=/mingw64/lib");
-        println!("cargo:rustc-link-lib=x264");
-        println!("cargo:rustc-link-lib=z");
-        println!("cargo:rustc-link-lib=bcrypt");
-        println!("cargo:rustc-link-lib=ole32");
-        println!("cargo:rustc-link-lib=user32");
-        println!("cargo:rustc-link-lib=gdi32");
-        // C++ runtime
-        let gcc_lib_dir = std::process::Command::new("gcc")
-            .args(&["--print-file-name=libgcc_eh.a"])
-            .output()
-            .map(|o| {
-                let path = String::from_utf8_lossy(&o.stdout).trim().to_string();
-                std::path::PathBuf::from(path)
-                    .parent()
-                    .map(|p| p.to_path_buf())
-            })
-            .ok()
-            .flatten();
-        if let Some(dir) = gcc_lib_dir {
-            println!("cargo:rustc-link-search=native={}", dir.display());
-        }
-        println!("cargo:rustc-link-lib=stdc++");
-        println!("cargo:rustc-link-lib=gcc_eh");
+        link_platform_extralibs();
     }
 }
+
+/// Emit the extra (non-FFmpeg) link libraries and search paths required for a
+/// fully static FFmpeg build on each target platform.
+///
+/// Windows (MINGW64): x264, zlib, Windows system libs (bcrypt/ole32/user32/gdi32),
+///   d3d11/dxgi (D3D11VA), libvpl (Intel QSV), GCC C++ runtime (stdc++/gcc_eh).
+/// Linux: x264, zlib, libvpl (QSV), VA-API (va/va-drm), libdrm, pthread, m,
+///   stdc++.
+/// macOS: x264, zlib, bz2, iconv, Apple frameworks (VideoToolbox, CoreMedia,
+///   CoreVideo, CoreFoundation, CoreServices, Security, AVFoundation,
+///   AudioToolbox), libc++ (Clang runtime, not libstdc++).
+fn link_platform_extralibs() {
+    #[cfg(target_os = "windows")]
+    link_windows_extralibs();
+    #[cfg(target_os = "linux")]
+    link_linux_extralibs();
+    #[cfg(target_os = "macos")]
+    link_macos_extralibs();
+}
+
+#[cfg(target_os = "windows")]
+fn link_windows_extralibs() {
+    // MINGW64 static archive search path.
+    println!("cargo:rustc-link-search=native=/mingw64/lib");
+
+    // Software encoder + zlib (PNG codec, container formats).
+    // NOTE: /mingw64/lib/libx264.dll.a and libz.dll.a must be renamed to .bak
+    // so the GNU linker picks the static .a archives instead of the import stubs.
+    println!("cargo:rustc-link-lib=x264");
+    println!("cargo:rustc-link-lib=z");
+
+    // Intel QSV via libvpl (only if --enable-libvpl was used).
+    // NOTE: /mingw64/lib/libvpl.dll.a must be renamed if present.
+    println!("cargo:rustc-link-lib=vpl");
+
+    // Windows system libraries required by FFmpeg + HWAccel APIs.
+    println!("cargo:rustc-link-lib=bcrypt");
+    println!("cargo:rustc-link-lib=ole32");
+    println!("cargo:rustc-link-lib=user32");
+    println!("cargo:rustc-link-lib=gdi32");
+
+    // D3D11VA / DXVA2 — Windows OS DLLs, no bundling required.
+    println!("cargo:rustc-link-lib=d3d11");
+    println!("cargo:rustc-link-lib=dxgi");
+
+    // GCC C++ runtime — auto-locate via gcc, then link stdc++ and gcc_eh.
+    let gcc_lib_dir = std::process::Command::new("gcc")
+        .args(["--print-file-name=libgcc_eh.a"])
+        .output()
+        .map(|o| {
+            let path = String::from_utf8_lossy(&o.stdout).trim().to_string();
+            std::path::PathBuf::from(path)
+                .parent()
+                .map(|p| p.to_path_buf())
+        })
+        .ok()
+        .flatten();
+    if let Some(dir) = gcc_lib_dir {
+        println!("cargo:rustc-link-search=native={}", dir.display());
+    }
+    println!("cargo:rustc-link-lib=stdc++");
+    println!("cargo:rustc-link-lib=gcc_eh");
+}
+
+#[cfg(target_os = "linux")]
+fn link_linux_extralibs() {
+    println!("cargo:rustc-link-search=native=/usr/local/lib");
+    println!("cargo:rustc-link-search=native=/usr/lib/x86_64-linux-gnu");
+
+    println!("cargo:rustc-link-lib=x264");
+    println!("cargo:rustc-link-lib=z");
+    println!("cargo:rustc-link-lib=vpl"); // Intel QSV
+    println!("cargo:rustc-link-lib=va"); // VA-API
+    println!("cargo:rustc-link-lib=va-drm"); // VA-API DRM backend
+    println!("cargo:rustc-link-lib=drm");
+    println!("cargo:rustc-link-lib=pthread");
+    println!("cargo:rustc-link-lib=m");
+    println!("cargo:rustc-link-lib=stdc++");
+}
+
+#[cfg(target_os = "macos")]
+fn link_macos_extralibs() {
+    println!("cargo:rustc-link-lib=x264");
+    println!("cargo:rustc-link-lib=z");
+    println!("cargo:rustc-link-lib=bz2"); // macOS ships bz2
+    println!("cargo:rustc-link-lib=iconv"); // macOS ships iconv
+
+    // Apple frameworks for VideoToolbox hardware acceleration.
+    println!("cargo:rustc-link-lib=framework=VideoToolbox");
+    println!("cargo:rustc-link-lib=framework=AudioToolbox");
+    println!("cargo:rustc-link-lib=framework=CoreMedia");
+    println!("cargo:rustc-link-lib=framework=CoreVideo");
+    println!("cargo:rustc-link-lib=framework=CoreFoundation");
+    println!("cargo:rustc-link-lib=framework=CoreServices");
+    println!("cargo:rustc-link-lib=framework=Security");
+    println!("cargo:rustc-link-lib=framework=AVFoundation");
+
+    // libc++ (Clang runtime) — not libstdc++ (GCC) on macOS.
+    println!("cargo:rustc-link-lib=c++");
+}
+
+#[cfg(not(any(target_os = "windows", target_os = "linux", target_os = "macos")))]
+fn link_platform_extralibs() {}
 
 fn main() {
     let out_dir = output();
@@ -916,7 +996,6 @@ fn main() {
             "cargo:rustc-link-search=native={}",
             ffmpeg_dir.join("lib").to_string_lossy()
         );
-        println!("cargo:rustc-link-search=native=/mingw64/lib");
         link_to_libraries(statik);
         vec![ffmpeg_dir.join("include")]
     } else if let Some(paths) = try_vcpkg(statik) {
