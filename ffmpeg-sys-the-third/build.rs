@@ -900,9 +900,10 @@ fn link_windows_extralibs() {
     println!("cargo:rustc-link-lib=x264");
     println!("cargo:rustc-link-lib=z");
 
-    // Intel QSV via libvpl (only if --enable-libvpl was used).
-    // NOTE: /mingw64/lib/libvpl.dll.a must be renamed if present.
-    println!("cargo:rustc-link-lib=vpl");
+    // Intel QSV via libvpl — only linked if the FFmpeg build used --enable-libvpl.
+    if std::path::Path::new("/mingw64/lib/libvpl.a").exists() {
+        println!("cargo:rustc-link-lib=vpl");
+    }
 
     // Windows system libraries required by FFmpeg + HWAccel APIs.
     println!("cargo:rustc-link-lib=bcrypt");
@@ -911,8 +912,11 @@ fn link_windows_extralibs() {
     println!("cargo:rustc-link-lib=gdi32");
 
     // D3D11VA / DXVA2 — Windows OS DLLs, no bundling required.
-    println!("cargo:rustc-link-lib=d3d11");
-    println!("cargo:rustc-link-lib=dxgi");
+    // Only linked if the FFmpeg build used --enable-d3d11va.
+    if std::path::Path::new("/mingw64/lib/libd3d11.a").exists() {
+        println!("cargo:rustc-link-lib=d3d11");
+        println!("cargo:rustc-link-lib=dxgi");
+    }
 
     // GCC C++ runtime — auto-locate via gcc, then link stdc++ and gcc_eh.
     let gcc_lib_dir = std::process::Command::new("gcc")
@@ -940,10 +944,19 @@ fn link_linux_extralibs() {
 
     println!("cargo:rustc-link-lib=x264");
     println!("cargo:rustc-link-lib=z");
-    println!("cargo:rustc-link-lib=vpl"); // Intel QSV
-    println!("cargo:rustc-link-lib=va"); // VA-API
-    println!("cargo:rustc-link-lib=va-drm"); // VA-API DRM backend
-    println!("cargo:rustc-link-lib=drm");
+    // Intel QSV via libvpl — only linked if the FFmpeg build used --enable-libvpl.
+    // The CI build does; a custom build without QSV should remove this.
+    if std::path::Path::new("/usr/local/lib/libvpl.a").exists() {
+        println!("cargo:rustc-link-lib=vpl");
+    }
+    // VA-API — only linked if the FFmpeg build used --enable-vaapi.
+    if std::path::Path::new("/usr/lib/x86_64-linux-gnu/libva.a").exists()
+        || std::path::Path::new("/usr/local/lib/libva.a").exists()
+    {
+        println!("cargo:rustc-link-lib=va");
+        println!("cargo:rustc-link-lib=va-drm");
+        println!("cargo:rustc-link-lib=drm");
+    }
     println!("cargo:rustc-link-lib=pthread");
     println!("cargo:rustc-link-lib=m");
     println!("cargo:rustc-link-lib=stdc++");
