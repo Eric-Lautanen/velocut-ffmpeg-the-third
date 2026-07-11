@@ -1097,6 +1097,11 @@ fn main() {
         .prepend_enum_name(false)
         .derive_eq(true)
         .size_t_is_usize(true)
+        // Disable layout tests — they emit static asserts like
+        // `size_of::<AVFormatContext>() - 472` which overflow when a struct
+        // is generated as opaque (size 1) on some libclang versions. These
+        // assertions are compile-time sanity checks, not runtime code.
+        .layout_tests(false)
         .parse_callbacks(Box::new(Callbacks));
 
     if cargo_feature_enabled("non_exhaustive_enums") {
